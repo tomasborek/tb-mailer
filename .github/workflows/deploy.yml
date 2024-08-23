@@ -31,13 +31,16 @@ jobs:
         - name: Checkout repository
           uses: actions/checkout@v2
 
+        - name: Install sshpass
+          run: sudo apt-get install sshpass
+
         - name: Copy docker-compose
-          run: scp -o StrictHostKeyChecking=no ./.deployment/docker-compose.production.yml ${{secrets.SSH_USER}}@${{secrets.SSH_HOST}}:/home/${{secrets.SSH_USER}}/composes/docker-compose.production.yml
+          run: sshpass -p "${{secrets.SSH_PASS}}" \ scp -o StrictHostKeyChecking=no ./.deployment/docker-compose.production.yml ${{secrets.SSH_USER}}@${{secrets.SSH_HOST}}:/home/${{secrets.SSH_USER}}/composes/docker-compose.production.yml
         
         - name: Copy docker_run.sh
-          run: scp -o StrictHostKeyChecking=no ./.deployment/docker_run.sh ${{secrets.SSH_USER}}@${{secrets.SSH_HOST}}:/home/${{secrets.SSH_USER}}/composes/docker_run.sh
+          run: sshpass -p "${{secrets.SSH_PASS}}" \ scp -o StrictHostKeyChecking=no ./.deployment/docker_run.sh ${{secrets.SSH_USER}}@${{secrets.SSH_HOST}}:/home/${{secrets.SSH_USER}}/composes/docker_run.sh
         
         - name: Run deploy script on server
-          run: ssh -o StrictHostKeyChecking=no ${{secrets.SSH_USER}}@${{secrets.SSH_HOST}} bash /home/${{secrets.SSH_USER}}/composes/docker_run.sh '${{secrets.DOCKER_USERNAME}}' '${{secrets.DOCKER_PASSWORD}}' '${{secrets.DOCKER_IMAGE}}' '${{secrets.DOCKER_REGISTRY}}'
+          run: sshpass -p "${{secrets.SSH_PASS}}" \ ssh -o StrictHostKeyChecking=no ${{secrets.SSH_USER}}@${{secrets.SSH_HOST}} bash /home/${{secrets.SSH_USER}}/composes/docker_run.sh '${{secrets.DOCKER_USERNAME}}' '${{secrets.DOCKER_PASSWORD}}' '${{secrets.DOCKER_IMAGE}}' '${{secrets.DOCKER_REGISTRY}}'
 
 
