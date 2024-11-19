@@ -2,7 +2,7 @@
   "scripts": {
     "dev": "nodemon src/index.ts --watch",
     "start": "npm run build && node ./dist/src/index.js",
-    "build": "rimraf ./dist && tsc && tsc-alias"
+    "build": "rm -rf ./dist && tsc && tsc-alias"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.8.3",
@@ -11,7 +11,6 @@
     "@types/morgan": "^1.9.9",
     "@types/node": "^22.5.0",
     "@types/nodemailer": "^6.4.15",
-    "@types/winston": "^2.4.4",
     "envalid": "^8.0.0",
     "nodemon": "^3.1.4",
     "ts-node": "^10.9.2",
