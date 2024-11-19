@@ -46,7 +46,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Copy docker-compose
-        run: scp .deployment/docker-compose.production.yml ${{secrets.SSH_USER}}@${{secrets.SSH_HOST}}:/home/${{secrets.SSH_USER}}/composes/mailer/docker-compose.production.yml
+        run: scp .deployment/docker-compose.production.yaml ${{secrets.SSH_USER}}@${{secrets.SSH_HOST}}:/home/${{secrets.SSH_USER}}/composes/mailer/docker-compose.production.yaml
 
       - name: Copy docker_run.sh
         run: scp .deployment/docker_run.sh ${{secrets.SSH_USER}}@${{secrets.SSH_HOST}}:/home/${{secrets.SSH_USER}}/composes/mailer/docker_run.sh
