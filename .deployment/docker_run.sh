@@ -11,6 +11,5 @@ docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD $DOCKER_REGISTRY
 
 docker pull $DOCKER_IMAGE:latest
 docker compose down --remove-orphans
-docker compose up -d
+docker compose -f docker-compose.production.yaml up -d
 docker system prune --volumes -fa
-
