@@ -10,5 +10,5 @@ export const env = cleanEnv(process.env, {
   SMTP_USER: str(),
   SMTP_PASS: str(),
   ALLOWED_ORIGINS: str(),
-  EMAIL_FROM: str(),
+  ROOT_DOMAIN: str({ default: "tomasborek.dev" }),
 });

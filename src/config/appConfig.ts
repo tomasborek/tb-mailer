@@ -9,11 +9,9 @@ export const appConfig = {
       pass: env.SMTP_PASS,
     },
   },
-  email: {
-    from: env.EMAIL_FROM,
-  },
   app: {
     port: env.PORT,
+    rootDomain: env.ROOT_DOMAIN,
   },
   cors: {
     allowedOrigins: env.ALLOWED_ORIGINS.split(",").includes("*")

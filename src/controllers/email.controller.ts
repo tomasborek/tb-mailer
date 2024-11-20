@@ -18,7 +18,7 @@ const schema = z
 export class EmailController {
   constructor(
     private transporter: nodemailer.Transporter,
-    private emailFrom: string,
+    private rootDomain: string,
   ) {}
 
   @Controller()
@@ -27,7 +27,7 @@ export class EmailController {
     const { to, subject, html, text } = req.body;
 
     const options = {
-      from: this.emailFrom,
+      from: `mailer@${this.rootDomain}`,
       to,
       subject,
       html,
