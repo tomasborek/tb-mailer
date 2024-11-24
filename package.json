@@ -1,7 +1,7 @@
 {
   "scripts": {
     "dev": "nodemon src/index.ts --watch",
-    "start": "npm run build && node ./dist/src/index.js",
+    "start": "node ./dist/src/index.js",
     "build": "rm -rf ./dist && tsc && tsc-alias"
   },
   "devDependencies": {
