@@ -13,7 +13,7 @@ const schema = z
     from: z.string().optional(),
     to: z.string().optional(),
     bulkTo: z.array(z.string()).optional(),
-    subject: z.string(),
+    subject: z.string().optional(),
     html: z.string().optional(),
     text: z.string().optional(),
   })
